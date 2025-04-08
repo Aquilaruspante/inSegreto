@@ -1,8 +1,9 @@
-import storage from './storage.js';
+import { postLogger } from './postManager.js';
+
+
 
 window.onload = () => {
     const main = document.querySelector('main');
 
-    const posts = storage.getPosts();
-    console.log(posts);
+    postLogger(main);    
 }
