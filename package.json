@@ -2,6 +2,7 @@
   "name": "insegreto",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/.bin/jest --passWithNoTests",
     "watch": "webpack --watch",
