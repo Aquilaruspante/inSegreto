@@ -1,4 +1,4 @@
-import storageLocal from "./localStorage";
+import storageLocal from "./localStorage.js";
 
 const storage = storageLocal;
 
