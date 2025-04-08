@@ -1,5 +1,5 @@
-import fakeStorage from "./fakeStorage";
+import storageLocal from "./localStorage";
 
-const storage = fakeStorage;
+const storage = storageLocal;
 
 export default storage;
