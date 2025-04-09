@@ -10,11 +10,13 @@ window.onload = () => {
 
     newPostForm.addEventListener('submit', () => {
         newPostDialog.showModal();
-    })
+    });
 
-    sayItForm.addEventListener('submit', () => {
+    sayItForm.addEventListener('submit', (event) => {
+        event.preventDefault();
         submitNewPost();
+        newPostDialog.close();
         renderFeed(main); 
-    })
+    });
     //   
-}
+};
