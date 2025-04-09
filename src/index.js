@@ -19,6 +19,7 @@ window.onload = () => {
         event.preventDefault();
         submitNewPost();
         newPostDialog.close();
+        main.innerHTML = '';
         renderFeed(main); 
     }); 
 
