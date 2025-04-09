@@ -1,7 +1,7 @@
 import postComponent from "./postComponent.js";
 import storage from "./storage.js";
 
-function postLogger (container) {
+function renderFeed (container) {
     const posts = storage.getPosts();
     for (let post of posts) {
         const newPostCompnent = new postComponent(post.gender, post.age, post.body);
@@ -9,4 +9,17 @@ function postLogger (container) {
     };
 };
 
-export { postLogger };
+function submitNewPost() {
+    const genderField = document.querySelector('#gender');
+    const gender = genderField.value;
+
+    const ageField = document.querySelector('#age');
+    const age = ageField.value;
+
+    const bodyField = document.querySelector('#body');
+    const body = bodyField.value;
+
+    storage.savePost(gender, age, body);
+};
+
+export { renderFeed, submitNewPost };
