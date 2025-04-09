@@ -1,4 +1,4 @@
-import { renderFeed, submitNewPost } from './postmanager.js';
+import { renderFeed, submitNewPost } from './post/postmanager.js';
 
 window.onload = () => {
     const main = document.querySelector('main');

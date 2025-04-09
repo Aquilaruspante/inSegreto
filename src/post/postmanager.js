@@ -1,5 +1,5 @@
 import postComponent from "./postComponent.js";
-import storage from "./storage/storage.js";
+import storage from "../storage/storage.js";
 
 function renderFeed (container) {
     const posts = storage.getPosts();

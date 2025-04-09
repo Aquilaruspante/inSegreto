@@ -1,5 +1,3 @@
-import storage from "./storage/storage.js";
-
 class postComponent {
     constructor (gender, age, body) {
         this.postCard = document.createElement('div');
