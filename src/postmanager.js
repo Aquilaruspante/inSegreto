@@ -1,4 +1,5 @@
 import postComponent from "./postComponent.js";
+import storage from "./storage.js";
 
 function postLogger (container) {
     const posts = storage.getPosts();
