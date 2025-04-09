@@ -16,15 +16,15 @@ class postComponent {
         this.ageField.setAttribute('class', 'post-age');
         this.ageField.innerText = age;
 
-        this.header.appendChild(this.gender);
-        this.header.appendChild(this.age);
+        this.header.appendChild(this.genderField);
+        this.header.appendChild(this.ageField);
 
         this.body = document.createElement('div');
         this.body.setAttribute('class', 'post-body');
-        this.body.innerText = post.body;
+        this.body.innerText = body;
 
-        this.postCard.appendChild(header);
-        this.postCard.appendChild(body);
+        this.postCard.appendChild(this.header);
+        this.postCard.appendChild(this.body);
     };
 
     getPostComponent() {
