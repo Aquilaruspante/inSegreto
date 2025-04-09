@@ -1,5 +1,4 @@
 import { renderFeed, submitNewPost } from './postmanager.js';
-import storage from './storage.js';
 
 window.onload = () => {
     const main = document.querySelector('main');
@@ -7,6 +6,10 @@ window.onload = () => {
     const newPostDialog = document.querySelector('#new-post-dialog');
 
     const sayItForm = document.querySelector('#say-it-form');
+
+    function init() {
+        renderFeed(main);
+    }
 
     newPostForm.addEventListener('submit', () => {
         newPostDialog.showModal();
@@ -17,6 +20,7 @@ window.onload = () => {
         submitNewPost();
         newPostDialog.close();
         renderFeed(main); 
-    });
-    //   
+    }); 
+
+    init();
 };
