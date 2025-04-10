@@ -15,7 +15,7 @@
     <dialog id="new-post-dialog">
         <form action="#feed" id="say-it-form" method="post">
             <header id="new-post-form-hd">
-                <select name="gender" id="gender">
+                <select name="gender" id="gender" required>
                     <option value="" selected>Select gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -24,10 +24,10 @@
                 </select>
                 <div class="age">
                     <label for="age">Age</label>
-                    <input type="number" name="age" id="age" min="13" max="99">
+                    <input type="number" name="age" id="age" min="13" max="99" required>
                 </div>
             </header>
-            <textarea name="body" id="body" placeholder="Your secret goes here..."></textarea>
+            <textarea name="body" id="body" placeholder="Your secret goes here..." required></textarea>
             <button type="submit" id="say-it-btn">Say it!</button>
         </form>
     </dialog>
