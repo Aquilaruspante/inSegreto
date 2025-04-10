@@ -7,6 +7,7 @@ window.onload = () => {
     const newPostDialog = document.querySelector('#new-post-dialog');
 
     const sayItForm = document.querySelector('#say-it-form');
+    const cancelButton = document.querySelector('#cancel-btn');
 
     function init() {
         renderFeed(main);
@@ -24,6 +25,10 @@ window.onload = () => {
         main.innerHTML = '';
         renderFeed(main); 
     }); 
+
+    cancelButton.addEventListener('click', () => {
+        newPostDialog.close();
+    })
 
     init();
 };
