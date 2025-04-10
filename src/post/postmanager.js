@@ -2,6 +2,10 @@ import postComponent from "./postComponent.js";
 import storage from "../storage/storage.js";
 import { validatePost } from "./postMiddleware.js";
 
+const genderField = document.querySelector('#gender');
+const ageField = document.querySelector('#age');
+const bodyField = document.querySelector('#body');
+
 function renderFeed (container) {
     const posts = storage.getPosts();
     if (!posts.length) {
@@ -14,22 +18,21 @@ function renderFeed (container) {
     }
 };
 
-function submitNewPost() {
-    const genderField = document.querySelector('#gender');
-    const gender = genderField.value;
-
-    const ageField = document.querySelector('#age');
-    const age = ageField.value;
-
-    const bodyField = document.querySelector('#body');
-    const body = bodyField.value;
-
+function resetNewPostForm() {
     genderField.value = '';
     ageField.value = null;
     bodyField.value = '';
+}
+
+function submitNewPost() {
+    const gender = genderField.value;
+    const age = ageField.value;
+    const body = bodyField.value;
+
+    resetNewPostForm();
     
     validatePost(gender, age, body);                                                 // middleware
     storage.savePost(gender, age, body);
 };
 
-export { renderFeed, submitNewPost };
+export { renderFeed, submitNewPost, resetNewPostForm };

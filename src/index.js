@@ -1,4 +1,4 @@
-import { renderFeed, submitNewPost } from './post/postmanager.js';
+import { renderFeed, submitNewPost, resetNewPostForm } from './post/postmanager.js';
 import './styles.css';
 
 window.onload = () => {
@@ -27,6 +27,7 @@ window.onload = () => {
     }); 
 
     cancelButton.addEventListener('click', () => {
+        resetNewPostForm();
         newPostDialog.close();
     })
 
