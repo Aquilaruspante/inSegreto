@@ -11,7 +11,8 @@ function renderFeed (container) {
     if (!posts.length) {
         container.innerHTML = '<h3>No posts yet. Write the first one</h3>';
     } else {
-        for (let post of posts) {
+        for (let i = posts.length - 1; i >= 0; i--) {
+            const post = posts[i];
             const newPostCompnent = new postComponent(post.gender, post.age, post.body);
             container.appendChild(newPostCompnent.getPostComponent());
         };
