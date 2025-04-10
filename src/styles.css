@@ -129,3 +129,7 @@ dialog button {
     display: flex;
     justify-content: space-between;
 }
+
+::backdrop {
+    background-color: rgb(177, 172, 172, 0.7);
+}
