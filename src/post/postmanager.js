@@ -4,10 +4,14 @@ import { validatePost } from "./postMiddleware.js";
 
 function renderFeed (container) {
     const posts = storage.getPosts();
-    for (let post of posts) {
-        const newPostCompnent = new postComponent(post.gender, post.age, post.body);
-        container.appendChild(newPostCompnent.getPostComponent());
-    };
+    if (!posts.length) {
+        container.innerHTML = '<h3>No posts yet. Write the first one</h3>';
+    } else {
+        for (let post of posts) {
+            const newPostCompnent = new postComponent(post.gender, post.age, post.body);
+            container.appendChild(newPostCompnent.getPostComponent());
+        };
+    }
 };
 
 function submitNewPost() {

@@ -94,3 +94,8 @@ main {
     box-shadow: 2px 2px rgb(114, 106, 106);
     transition: 0.2s;
 }
+
+main h3 {
+    text-align: center;
+    margin-top: 200px;
+}
