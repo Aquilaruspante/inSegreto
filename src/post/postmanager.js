@@ -1,5 +1,6 @@
 import postComponent from "./postComponent.js";
 import storage from "../storage/storage.js";
+import { validatePost } from "./postMiddleware.js";
 
 function renderFeed (container) {
     const posts = storage.getPosts();
@@ -19,6 +20,7 @@ function submitNewPost() {
     const bodyField = document.querySelector('#body');
     const body = bodyField.value;
 
+    validatePost(gender, age, body);
     storage.savePost(gender, age, body);
 };
 
