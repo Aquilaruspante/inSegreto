@@ -20,7 +20,7 @@ function submitNewPost() {
     const bodyField = document.querySelector('#body');
     const body = bodyField.value;
 
-    validatePost(gender, age, body);
+    validatePost(gender, age, body);                                                 // middleware
     storage.savePost(gender, age, body);
 };
 
