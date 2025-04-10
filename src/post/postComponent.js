@@ -12,7 +12,7 @@ class postComponent {
 
         this.ageField = document.createElement('div');
         this.ageField.setAttribute('class', 'post-age');
-        this.ageField.innerText = age;
+        this.ageField.innerText = `${age} years old`;
 
         this.header.appendChild(this.genderField);
         this.header.appendChild(this.ageField);
