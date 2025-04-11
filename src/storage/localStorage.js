@@ -3,7 +3,14 @@ import Post from '../post/post.js';
 const storageLocal = {
     getPosts() {
         const posts = localStorage.getItem('inSegreto-posts');
-        return posts ? JSON.parse(posts) : [];
+        return posts ? posts : [];
+    },
+
+    getPostsBytens(page) {
+        const posts = this.getPosts();
+        const start = page * 10;
+        const end = start + 10;
+        return posts.slice(start, end);
     },
 
     savePost(gender, age, body) {
@@ -20,6 +27,6 @@ const storageLocal = {
         posts.splice(id, 1);
         localStorage.setItem('inSegreto-posts', JSON.stringify(posts));
     }
-}
+};
 
 export default storageLocal;
