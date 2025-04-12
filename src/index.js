@@ -5,7 +5,7 @@ window.onload = () => {
     const body = document.querySelector('body');
     let page = 1;
 
-    const main = document.querySelector('main');
+    const postContainer = document.querySelector('#post-container');
     const newPostForm = document.querySelector('#new-post-btn');
     const newPostDialog = document.querySelector('#new-post-dialog');
 
@@ -24,15 +24,15 @@ window.onload = () => {
         if (scrollY + innerHeight >= scrollHeight) {
             isLoading = true;
             page += 1;
-            main.innerHTML = '';
-            renderFeed(main, page);
+            postContainer.innerHTML = '';
+            renderFeed(postContainer, page);
             isLoading = false;
         };
     });
     
 
     function init() {
-        renderFeed(main, page);
+        renderFeed(postContainer, page);
     };
 
     newPostForm.addEventListener('submit', (event) => {
@@ -44,8 +44,8 @@ window.onload = () => {
         event.preventDefault();
         submitNewPost();
         newPostDialog.close();
-        main.innerHTML = '';
-        renderFeed(main, page); 
+        postContainer.innerHTML = '';
+        renderFeed(postContainer, page); 
     }); 
 
     cancelButton.addEventListener('click', () => {
