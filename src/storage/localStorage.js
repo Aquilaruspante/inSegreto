@@ -2,18 +2,23 @@ import Post from '../post/post.js';
 import Fuse from 'fuse.js';
 
 let cachedPosts = null;
-const fuse = new Fuse(cachedPosts, {
-    keys: [body]
-});
+let fuse = null;
 
 const storageLocal = {
     postsPerPage: 20,
     
+    updateFuse() {
+        // Aggiorna l'oggetto Fuse con i dati correnti
+        fuse = new Fuse(cachedPosts, {
+            keys: ['body']  // Indica la chiave da cercare
+        });
+    },
 
     getPosts() {
         if (!cachedPosts) {
             const posts = localStorage.getItem('inSegreto-posts');
             cachedPosts = posts ? JSON.parse(posts) : [];
+            this.updateFuse();
         };
         
         return cachedPosts;
@@ -32,7 +37,7 @@ const storageLocal = {
         const newPost = new Post(gender, age, body, id);
         cachedPosts.push(newPost);
         postArray.push(newPost);
-    
+        this.updateFuse();
         localStorage.setItem('inSegreto-posts', JSON.stringify(postArray));
     },
 
