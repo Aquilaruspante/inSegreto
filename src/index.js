@@ -21,15 +21,13 @@ window.onload = () => {
         const innerHeight = window.innerHeight;
         const scrollHeight = body.scrollHeight;
 
-       
-    
         if (scrollY + innerHeight >= scrollHeight) {
             isLoading = true;
             page += 1;
             main.innerHTML = '';
             renderFeed(main, page);
             isLoading = false;
-        }
+        };
     });
     
 

@@ -7,8 +7,7 @@ const ageField = document.querySelector('#age');
 const bodyField = document.querySelector('#body');
 
 function renderFeed (container, page) {
-    const posts = storage.getPostsBytens(page);
-    console.log(posts.length);
+    const posts = storage.getPostsBytens(page);                                                       console.log(posts.length);    // debug                                
     if (!posts.length) {
         container.innerHTML = '<h3>No posts yet. Write the first one</h3>';
     } else {
