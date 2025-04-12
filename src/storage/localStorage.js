@@ -2,6 +2,9 @@ import Post from '../post/post.js';
 import Fuse from 'fuse.js';
 
 let cachedPosts = null;
+const fuse = new Fuse(cachedPosts, {
+    keys: [body]
+});
 
 const storageLocal = {
     postsPerPage: 20,
@@ -38,6 +41,10 @@ const storageLocal = {
         posts.splice(id, 1);
         localStorage.setItem('inSegreto-posts', JSON.stringify(posts));
     },   
+
+    searchByWord(word) {
+        fuse.search(word);
+    }
 };
 
 export default storageLocal;
