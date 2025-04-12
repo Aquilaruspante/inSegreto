@@ -3,7 +3,7 @@ import Post from '../post/post.js';
 const storageLocal = {
     getPosts() {
         const posts = localStorage.getItem('inSegreto-posts');
-        return posts ? posts : [];
+        return posts ? JSON.parse(posts) : [];
     },
 
     getPostsBytens(page) {
