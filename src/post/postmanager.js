@@ -6,17 +6,20 @@ const genderField = document.querySelector('#gender');
 const ageField = document.querySelector('#age');
 const bodyField = document.querySelector('#body');
 
-function renderFeed (container, page) {
-    const posts = storage.getPostsBytens(page);                                                       console.log(posts.length);    // debug                                
-    if (!posts.length) {
+function renderFeed (container, page, posts = null) {
+    container.innerHTML = '';
+
+    const postList = posts || storage.getPostsBytens(page);                                                       console.log(postList.length);    // debug
+
+    if (!postList.length) {
         container.innerHTML = '<h3>No posts yet. Write the first one</h3>';
     } else {
-        for (let i = posts.length - 1; i >= 0; i--) {
-            const post = posts[i];
+        for (let i = postList.length - 1; i >= 0; i--) {
+            const post = postList[i];
             const newPostCompnent = new postComponent(post.gender, post.age, post.body);
             container.appendChild(newPostCompnent.getPostComponent());
         };
-    }
+    };
 };
 
 function resetNewPostForm() {
@@ -36,4 +39,8 @@ function submitNewPost() {
     storage.savePost(gender, age, body);
 };
 
-export { renderFeed, submitNewPost, resetNewPostForm };
+function searchByWord(word) {
+    return storage.searchByWord(word);
+};
+
+export { renderFeed, submitNewPost, resetNewPostForm, searchByWord };

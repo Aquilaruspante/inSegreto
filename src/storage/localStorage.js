@@ -48,7 +48,11 @@ const storageLocal = {
     },   
 
     searchByWord(word) {
-        fuse.search(word);
+        if (word.trim() !== '') {
+            return fuse.search(word).map(result => result.item);
+        } else {
+            return [...cachedPosts];
+        };
     }
 };
 

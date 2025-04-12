@@ -1,4 +1,4 @@
-import { renderFeed, submitNewPost, resetNewPostForm } from './post/postmanager.js';
+import { renderFeed, submitNewPost, resetNewPostForm, searchByWord } from './post/postmanager.js';
 import './styles.css';
 
 window.onload = () => {
@@ -11,6 +11,9 @@ window.onload = () => {
 
     const sayItForm = document.querySelector('#say-it-form');
     const cancelButton = document.querySelector('#cancel-btn');
+
+    const searchbar = document.querySelector('#search');
+    searchbar.value = '';
 
     let isLoading = false;
     
@@ -44,13 +47,17 @@ window.onload = () => {
         event.preventDefault();
         submitNewPost();
         newPostDialog.close();
-        postContainer.innerHTML = '';
         renderFeed(postContainer, page); 
     }); 
 
     cancelButton.addEventListener('click', () => {
         resetNewPostForm();
         newPostDialog.close();
+    });
+
+    searchbar.addEventListener('input', (event) => {
+        const posts = searchByWord(event.target.value);
+        renderFeed(postContainer, page, posts);
     })
 
     init();
