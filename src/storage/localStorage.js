@@ -1,6 +1,8 @@
 import Post from '../post/post.js';
 
 const storageLocal = {
+    postsPerPage: 20,
+
     getPosts() {
         const posts = localStorage.getItem('inSegreto-posts');
         return posts ? JSON.parse(posts) : [];
@@ -8,8 +10,8 @@ const storageLocal = {
 
     getPostsBytens(page) {
         const posts = this.getPosts();
-        const start = posts.length - (page * 10);
-        const end = start - 10;
+        const start = posts.length - (page * this.postsPerPage);                                                           
+        const end = start - this.postsPerPage >= 0 ? start - this.postsPerPage : 0;                         
         return posts.slice(end, start);
     },
 
