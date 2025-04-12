@@ -8,9 +8,9 @@ const storageLocal = {
 
     getPostsBytens(page) {
         const posts = this.getPosts();
-        const start = page * 10;
-        const end = start + 10;
-        return posts.slice(start, end);
+        const start = posts.length - (page * 10);
+        const end = start - 10;
+        return posts.slice(end, start);
     },
 
     savePost(gender, age, body) {
