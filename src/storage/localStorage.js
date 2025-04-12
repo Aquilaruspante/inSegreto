@@ -1,11 +1,19 @@
 import Post from '../post/post.js';
+import Fuse from 'fuse.js';
+
+let cachedPosts = null;
 
 const storageLocal = {
     postsPerPage: 20,
+    
 
     getPosts() {
-        const posts = localStorage.getItem('inSegreto-posts');
-        return posts ? JSON.parse(posts) : [];
+        if (!cachedPosts) {
+            const posts = localStorage.getItem('inSegreto-posts');
+            cachedPosts = posts ? JSON.parse(posts) : [];
+        };
+        
+        return cachedPosts;
     },
 
     getPostsBytens(page) {
@@ -19,6 +27,7 @@ const storageLocal = {
         const postArray = this.getPosts();
         const id = postArray.length;
         const newPost = new Post(gender, age, body, id);
+        cachedPosts.push(newPost);
         postArray.push(newPost);
     
         localStorage.setItem('inSegreto-posts', JSON.stringify(postArray));
@@ -28,7 +37,7 @@ const storageLocal = {
         const posts = this.getPosts();
         posts.splice(id, 1);
         localStorage.setItem('inSegreto-posts', JSON.stringify(posts));
-    }
+    },   
 };
 
 export default storageLocal;
