@@ -32,6 +32,11 @@ window.onload = () => {
             isLoading = false;
         };
     });
+
+    window.addEventListener('hashchange', () => {
+        const hash = window.location.hash;
+        navigationHandler(hash);
+    })
     
 
     function init() {
@@ -58,7 +63,7 @@ window.onload = () => {
     searchbar.addEventListener('input', (event) => {
         const posts = searchByWord(event.target.value);
         renderFeed(postContainer, page, posts);
-    })
+    });
 
     init();
 };
