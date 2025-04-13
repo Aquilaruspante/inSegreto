@@ -34,10 +34,16 @@ window.onload = () => {
     });
 
     window.addEventListener('hashchange', () => {
-        const hash = window.location.hash;
+        console.log('hash cambiato');
+        const hash = location.hash;
         navigationHandler(hash);
-    })
+    });
     
+    function navigationHandler(hash) {
+        if (hash === '#newPost') {
+            newPostDialog.showModal();
+        }
+    }
 
     function init() {
         renderFeed(postContainer, page);
@@ -45,19 +51,21 @@ window.onload = () => {
 
     newPostForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        newPostDialog.showModal();
+        window.location.hash = 'newPost';
     });
 
     sayItForm.addEventListener('submit', (event) => {
         event.preventDefault();
         submitNewPost();
         newPostDialog.close();
+        window.location.hash = '';
         renderFeed(postContainer, page); 
     }); 
 
     cancelButton.addEventListener('click', () => {
         resetNewPostForm();
         newPostDialog.close();
+        window.location.hash = '';
     });
 
     searchbar.addEventListener('input', (event) => {
