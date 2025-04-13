@@ -1,4 +1,8 @@
-import { renderFeed, submitNewPost, resetNewPostForm, searchByWord } from './post/postmanager.js';
+import { renderFeed, submitNewPost, searchByWord } from './post/postmanager.js';
+import setUpScrollPagination from './UIManagement/pagination.js';
+import { handleHashChange, handleNewPostFormSubmit, handleCancelButtnClick } from './UIManagement/navigation.js';
+import { handleSubmitNewPost } from './UIManagement/newPostHandler.js';
+import { handleSearchInput } from './UIManagement/searchHandler.js';
 import './styles.css';
 
 window.onload = () => {
@@ -15,63 +19,18 @@ window.onload = () => {
     const searchbar = document.querySelector('#search');
     searchbar.value = '';
 
-    let isLoading = false;
+    window.location.hash = '';
     
-    window.addEventListener('scroll', () => {
-        if (isLoading) return;
-    
-        const scrollY = window.scrollY;
-        const innerHeight = window.innerHeight;
-        const scrollHeight = body.scrollHeight;
-
-        if (scrollY + innerHeight >= scrollHeight) {
-            isLoading = true;
-            page += 1;
-            postContainer.innerHTML = '';
-            renderFeed(postContainer, page);
-            isLoading = false;
-        };
-    });
-
-    window.addEventListener('hashchange', () => {
-        console.log('hash cambiato');
-        const hash = location.hash;
-        navigationHandler(hash);
-    });
-    
-    function navigationHandler(hash) {
-        if (hash === '#newPost') {
-            newPostDialog.showModal();
-        }
-    }
+    setUpScrollPagination(postContainer, page, body);
+    handleHashChange(newPostDialog);
+    handleNewPostFormSubmit(newPostForm);
+    handleCancelButtnClick(cancelButton, newPostDialog);
+    handleSubmitNewPost(sayItForm, postContainer, page, newPostDialog);
+    handleSearchInput(searchbar, postContainer, page);
 
     function init() {
         renderFeed(postContainer, page);
     };
-
-    newPostForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        window.location.hash = 'newPost';
-    });
-
-    sayItForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        submitNewPost();
-        newPostDialog.close();
-        window.location.hash = '';
-        renderFeed(postContainer, page); 
-    }); 
-
-    cancelButton.addEventListener('click', () => {
-        resetNewPostForm();
-        newPostDialog.close();
-        window.location.hash = '';
-    });
-
-    searchbar.addEventListener('input', (event) => {
-        const posts = searchByWord(event.target.value);
-        renderFeed(postContainer, page, posts);
-    });
 
     init();
 };
