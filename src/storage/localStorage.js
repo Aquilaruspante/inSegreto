@@ -35,7 +35,7 @@ const storageLocal = {
         const postArray = this.getPosts();
         const id = postArray.length;
         const newPost = new Post(gender, age, body, id);
-        cachedPosts.push(newPost);
+        cachedPosts = [...cachedPosts, newPost];
         postArray.push(newPost);
         this.updateFuse();
         localStorage.setItem('inSegreto-posts', JSON.stringify(postArray));
