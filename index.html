@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Segreto</title>
+<script defer src="main.js"></script></head>
+<body>
+    <main>
+        <input type="search" name="search", id="search" placeholder="Search secrets...">
+        <div id="post-container"></div>
+    </main>
+    <form id="new-post-btn">
+        <button type="submit">+</button>
+    </form>
+    <dialog id="new-post-dialog">
+        <form id="say-it-form" method="post">
+            <header id="new-post-form-hd">
+                <select name="gender" id="gender" required>
+                    <option value="" selected>Select gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Trans">Trans Gender</option>
+                    <option value="Non-binary">Non Binary</option>
+                </select>
+                <div class="age">
+                    <label for="age">Age</label>
+                    <input type="number" name="age" id="age" min="13" max="99" required>
+                </div>
+            </header>
+            <textarea name="body" id="body" placeholder="Your secret goes here..." required></textarea>
+            <div id="btn-area">
+                <button type="button" id="cancel-btn">Cancel</button>
+                <button type="submit" id="say-it-btn">Say it!</button>
+            </div>
+        </form>
+    </dialog>
+</body>
+</html>
