@@ -32,7 +32,12 @@ function createRandomAge() {
 }
 
 function autoseed() {
-    
+    for (let i = 1; i <= 200; i++) {
+        const gender = createRandomGender();
+        const age = createRandomAge();
+        const body = createRandomPost();
+        storage.savePost(gender, age, body);
+    }
 }
 
 export { autoseed };
