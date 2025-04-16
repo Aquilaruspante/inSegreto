@@ -5,6 +5,8 @@ import { handleSubmitNewPost } from './UIManagement/newPostHandler.js';
 import { handleSearchInput } from './UIManagement/searchHandler.js';
 import './styles.css';
 
+export const mode = 'development';
+
 window.onload = () => {
     const body = document.querySelector('body');
     let page = 1;
