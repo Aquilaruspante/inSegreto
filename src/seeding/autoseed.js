@@ -1,4 +1,4 @@
-import text from "./text";
+import text from "./text.js";
 
 function autoseed() {
     console.log(text.length);

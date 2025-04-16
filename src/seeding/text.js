@@ -1,4 +1,4 @@
-export default text = `
+const text = `
 You will rejoice to hear that no disaster has accompanied the
 commencement of an enterprise which you have regarded with such evil
 forebodings. I arrived here yesterday, and my first task is to assure
@@ -2124,3 +2124,5 @@ from the preceding flash. The storm, as is often the case in
 Switzerland, appeared at once in various parts of the heavens. The
 most violent storm hung exactly north of the town, over the part of the
 lake which lies between the promontory of Belrive and the village of`
+
+export default text;

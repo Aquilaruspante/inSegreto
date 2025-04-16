@@ -1,5 +1,6 @@
 import { resetNewPostForm } from "../post/postmanager.js";
 import { mode } from "../index.js";
+import { autoseed } from "../seeding/autoseed.js";
 
 function navigationHandler(hash, dialog) {
     if (hash === '#newPost') {
