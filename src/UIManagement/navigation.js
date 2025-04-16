@@ -1,9 +1,12 @@
 import { resetNewPostForm } from "../post/postmanager.js";
+import { mode } from "../index.js";
 
 function navigationHandler(hash, dialog) {
     if (hash === '#newPost') {
         dialog.showModal();
-    };
+    } else if (hash === '#seed' && mode === 'development') {
+        autoseed();
+    }
 };
 
 export function handleHashChange(dialog) {
