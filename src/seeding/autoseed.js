@@ -27,6 +27,10 @@ function createRandomGender() {
     };
 };
 
+function createRandomAge() {
+    return Math.floor(Math.random() * 77) + 13;
+}
+
 function autoseed() {
     
 }
