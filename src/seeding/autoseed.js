@@ -37,7 +37,7 @@ function autoseed() {
         const age = createRandomAge();
         const body = createRandomPost();
         storage.savePost(gender, age, body);
-    }
-}
+    };
+};
 
 export { autoseed };
