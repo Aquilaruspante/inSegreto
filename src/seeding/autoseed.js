@@ -7,10 +7,28 @@ function createRandomPost() {
     const end = start + postLength;
     
     return text.slice(start, end);
-}
+};
+
+function createRandomGender() {
+    const randomIndex = Math.floor(Math.random() * 4) + 1;
+    switch (randomIndex) {
+        case 1:
+            return 'Male';
+            break;
+        case 2:
+            return 'Female';
+            break;
+        case 3:
+            return 'Trans';
+            break;
+        case 4:
+            return 'Non-binary';
+            break;
+    };
+};
 
 function autoseed() {
-    console.log(createRandomPost());
+    
 }
 
 export { autoseed };
