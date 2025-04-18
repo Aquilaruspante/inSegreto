@@ -16,7 +16,7 @@ function renderFeed (container, page, posts = null) {
     } else {
         for (let i = postList.length - 1; i >= 0; i--) {
             const post = postList[i];
-            const newPostCompnent = new postComponent(post.gender, post.age, post.body);
+            const newPostCompnent = new postComponent(post.gender, post.age, post.body, post.date);
             container.appendChild(newPostCompnent.getPostComponent());
         };
     };
