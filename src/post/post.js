@@ -5,7 +5,7 @@ export default class Post {
         this.gender = gender;
         this.age = age;
         this.body = body;
-        this.date = format(new Date.now(), 'dd/MM/yyyy');
+        this.date = format(Date.now(), 'dd/MM/yyyy');
         this.id = id;
     }
 }
