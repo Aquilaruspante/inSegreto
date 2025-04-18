@@ -26,8 +26,8 @@ const storageLocal = {
         return cachedPosts;
     },
 
-    getPostsBytens(page) {
-        const posts = this.getPosts();
+    getPostsBytens(page, postList = null) {
+        const posts = postList || this.getPosts();
         const start = posts.length;                                                           
         const end = start - (this.postsPerPage * page) >= 0 ? start - (this.postsPerPage * page) : 0;                         
         return posts.slice(end, start);

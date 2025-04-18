@@ -9,7 +9,7 @@ const bodyField = document.querySelector('#body');
 function renderFeed (container, page, posts = null) {
     container.innerHTML = '';
 
-    const postList = posts || storage.getPostsBytens(page);                                                       console.log(postList.length);    // debug
+    const postList = posts ? storage.getPostsBytens(page, posts) : storage.getPostsBytens(page);                      console.log(postList.length);    // debug
 
     if (!postList.length) {
         container.innerHTML = '<h3>No posts yet. Write the first one</h3>';
