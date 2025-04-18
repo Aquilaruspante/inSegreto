@@ -11,6 +11,7 @@ const storageLocal = {
         fuse = new Fuse(cachedPosts, {
             keys: ['body'],
             threshold: 0.2,  
+            findAllMatches: true,
         });
     },
 
