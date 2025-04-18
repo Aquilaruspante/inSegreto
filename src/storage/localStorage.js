@@ -10,7 +10,7 @@ const storageLocal = {
     updateFuse() {
         fuse = new Fuse(cachedPosts, {
             keys: ['body'],
-            threshold: 0.3,  
+            threshold: 0.2,  
         });
     },
 
