@@ -8,9 +8,9 @@ const storageLocal = {
     postsPerPage: 20,
     
     updateFuse() {
-        // Aggiorna l'oggetto Fuse con i dati correnti
         fuse = new Fuse(cachedPosts, {
-            keys: ['body']  // Indica la chiave da cercare
+            keys: ['body'],
+            threshold: 0.3,  
         });
     },
 
@@ -49,6 +49,8 @@ const storageLocal = {
 
     searchByWord(word) {
         if (word.trim() !== '') {
+            console.log('post sample:', cachedPosts[0]);
+            console.log('fuse config:', fuse.options.keys);
             return fuse.search(word).map(result => result.item);
         } else {
             return [...cachedPosts];
