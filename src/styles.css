@@ -140,3 +140,8 @@ dialog button {
     border-radius: 5px;
     height: 24px;
 }
+
+.footer {
+    background-color: grey;
+    padding: 5px;
+}

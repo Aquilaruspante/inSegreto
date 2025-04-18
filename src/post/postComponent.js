@@ -1,5 +1,5 @@
 class postComponent {
-    constructor (gender, age, body) {
+    constructor (gender, age, body, date) {
         this.postCard = document.createElement('div');
         this.postCard.setAttribute('class', 'post-card');
 
@@ -21,8 +21,13 @@ class postComponent {
         this.body.setAttribute('class', 'post-body');
         this.body.innerText = body;
 
+        this.footer = document.createElement('div');
+        this.footer.setAttribute('class', 'footer');
+        this.footer.innerText = date;
+
         this.postCard.appendChild(this.header);
         this.postCard.appendChild(this.body);
+        this.postCard.appendChild(this.footer);
     };
 
     getPostComponent() {
