@@ -6,10 +6,10 @@ const genderField = document.querySelector('#gender');
 const ageField = document.querySelector('#age');
 const bodyField = document.querySelector('#body');
 
-function renderFeed (container, page, posts = null) {
+async function renderFeed (container, page, posts = null) {
     container.innerHTML = '';
 
-    const postList = posts ? storage.getPostsBytens(page, posts) : storage.getPostsBytens(page);                      console.log(postList.length);    // debug
+    const postList = posts ? await storage.getPostsBytens(page, posts) : await storage.getPostsBytens(page);                      console.log('length', postList);    // debug
 
     if (!postList.length) {
         container.innerHTML = '<h3>No posts yet. Write the first one</h3>';
