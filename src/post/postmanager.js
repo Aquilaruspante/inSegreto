@@ -7,14 +7,15 @@ const ageField = document.querySelector('#age');
 const bodyField = document.querySelector('#body');
 
 async function renderFeed (container, page, posts = null) {
+    console.log('rendering', 'page', page);
     container.innerHTML = '';
 
     const postList = posts ? await storage.getPostsBytens(page, posts) : await storage.getPostsBytens(page);                      console.log('length', postList);    // debug
-
+    console.log('postlist', postList);
     if (!postList.length) {
         container.innerHTML = '<h3>No posts yet. Write the first one</h3>';
     } else {
-        for (let i = postList.length - 1; i >= 0; i--) {
+        for (let i = 0; i <= postList.length - 1; i++) {
             const post = postList[i];
             const newPostCompnent = new postComponent(post.gender, post.age, post.body, post.date);
             container.appendChild(newPostCompnent.getPostComponent());

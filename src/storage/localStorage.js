@@ -27,7 +27,7 @@ const storageLocal = {
     },
 
     getPostsBytens(page, postList = null) {
-        const posts = postList || this.getPosts();
+        const posts = postList || this.getPosts().reverse();
         const start = posts.length;                                                           
         const end = start - (this.postsPerPage * page) >= 0 ? start - (this.postsPerPage * page) : 0;                         
         return posts.slice(end, start);
