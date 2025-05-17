@@ -7,11 +7,10 @@ const ageField = document.querySelector('#age');
 const bodyField = document.querySelector('#body');
 
 async function renderFeed (container, page, posts = null) {
-    console.log('rendering', 'page', page);
+    console.log(posts);
     container.innerHTML = '';
 
-    const postList = posts ? await storage.getPostsBytens(page, posts) : await storage.getPostsBytens(page);                      console.log('length', postList);    // debug
-    console.log('postlist', postList);
+    const postList = posts ? posts : await storage.getPostsBytens(page);    
     if (!postList.length) {
         container.innerHTML = '<h3>No posts yet. Write the first one</h3>';
     } else {
@@ -40,8 +39,9 @@ function submitNewPost() {
     storage.savePost(gender, age, body);
 };
 
-function searchByWord(word) {
-    return storage.searchByWord(word);
+async function searchByWord(word) {
+    const posts = await storage.searchByWord(word);
+    return posts;
 };
 
 export { renderFeed, submitNewPost, resetNewPostForm, searchByWord };

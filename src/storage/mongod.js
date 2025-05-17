@@ -11,7 +11,6 @@ const mongoStorage = {
             const response = await axios.get(URL);
             const posts = response.data;
 
-
             return posts.map(post => ({
                 ...post,
                 date: format(post.createdAt, 'dd/MM/yyyy')
@@ -23,17 +22,25 @@ const mongoStorage = {
     },
 
     async getPostsBytens(page, postList = null) {
-        console.log('page in mongo', page);
         const newPosts = await this.getPosts(page);
-        console.log('new posts', newPosts);
         this.cachedPosts = [...this.cachedPosts, ...newPosts];
-        console.log('cached posts', this.cachedPosts);
 
         return this.cachedPosts;
     },
 
     async savePost(gender, age, body) {
         await axios.post('http://127.0.0.1:3000/posts', { gender, age, body }); 
+    },
+
+    async searchByWord(word) {
+        console.log('word', word);
+        const response = await axios.get(`http://127.0.0.1:3000/?q=${word}`);
+        const posts = response.data;
+
+        return posts.map(post => ({
+                ...post,
+                date: format(post.createdAt, 'dd/MM/yyyy')
+            }));
     }
 };
 
