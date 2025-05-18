@@ -60,7 +60,9 @@ const storageLocal = {
         };
     },
 
-    clearCache() {}
+    clearCache() {
+        // empty because is needed in the mongod API.
+    }
 };
 
 export default storageLocal;

@@ -47,6 +47,7 @@ const mongoStorage = {
     },
 
     clearCache() {
+        // to be called after every savePost() or feed won't be refreshed properly.
         this.cachedPosts = [];
     }
 };
