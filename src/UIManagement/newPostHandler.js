@@ -6,6 +6,6 @@ export function handleSubmitNewPost(sayItForm, postContainer, page, newPostDialo
         await submitNewPost();
         newPostDialog.close();
         window.location.hash = '';
-        renderFeed(postContainer, page); 
+        renderFeed(postContainer, page, null, true); 
     }); 
 };

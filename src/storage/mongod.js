@@ -21,9 +21,9 @@ const mongoStorage = {
         };
     },
 
-    async getPostsBytens(page, postList = null) {
+    async getPostsBytens(page, onlyCached) {
         const newPosts = await this.getPosts(page);
-        this.cachedPosts = [...this.cachedPosts, ...newPosts];
+        if (!onlyCached) this.cachedPosts = [...this.cachedPosts, ...newPosts];
 
         return this.cachedPosts;
     },
