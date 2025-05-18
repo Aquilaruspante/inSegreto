@@ -29,7 +29,10 @@ const mongoStorage = {
     },
 
     async savePost(gender, age, body) {
-        await axios.post('http://127.0.0.1:3000/posts', { gender, age, body }); 
+        const newPost = await axios.post('http://127.0.0.1:3000/posts', { gender, age, body }); 
+        console.log(newPost);
+
+        return newPost;
     },
 
     async searchByWord(word) {
@@ -41,6 +44,10 @@ const mongoStorage = {
                 ...post,
                 date: format(post.createdAt, 'dd/MM/yyyy')
             }));
+    },
+
+    clearCache() {
+        this.cachedPosts = [];
     }
 };
 

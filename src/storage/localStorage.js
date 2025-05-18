@@ -58,7 +58,9 @@ const storageLocal = {
         } else {
             return [...cachedPosts];
         };
-    }
+    },
+
+    clearCache() {}
 };
 
 export default storageLocal;

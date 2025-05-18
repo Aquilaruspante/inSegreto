@@ -7,7 +7,7 @@ const ageField = document.querySelector('#age');
 const bodyField = document.querySelector('#body');
 
 async function renderFeed (container, page, posts = null) {
-    console.log(posts);
+    console.log('rendering');
     container.innerHTML = '';
 
     const postList = posts ? posts : await storage.getPostsBytens(page);    
@@ -28,7 +28,7 @@ function resetNewPostForm() {
     bodyField.value = '';
 }
 
-function submitNewPost() {
+async function submitNewPost() {
     const gender = genderField.value;
     const age = ageField.value;
     const body = bodyField.value;
@@ -36,7 +36,9 @@ function submitNewPost() {
     resetNewPostForm();
     
     validatePost(gender, age, body);                                                 // middleware
-    storage.savePost(gender, age, body);
+    await storage.savePost(gender, age, body);
+    storage.clearCache();
+    console.log('post saved');
 };
 
 async function searchByWord(word) {
