@@ -29,14 +29,16 @@ const mongoStorage = {
     },
 
     async savePost(gender, age, body) {
-        const newPost = await axios.post('http://127.0.0.1:3000/posts', { gender, age, body }); 
-        console.log(newPost);
+        const response = await axios.post('http://127.0.0.1:3000/posts', { gender, age, body }); 
+        const newPost = {gender, age, body};
+        newPost.date = format(response.data.createdAt, 'dd/MM/yyyy');
+
+        this.cachedPosts.unshift(newPost);
 
         return newPost;
     },
 
     async searchByWord(word) {
-        console.log('word', word);
         const response = await axios.get(`http://127.0.0.1:3000/?q=${word}`);
         const posts = response.data;
 
@@ -46,9 +48,9 @@ const mongoStorage = {
             }));
     },
 
-    clearCache() {
+    updateCache(post) {
         // to be called after every savePost() or feed won't be refreshed properly.
-        this.cachedPosts = [];
+        this.cachedPosts.unshift(post);
     }
 };
 

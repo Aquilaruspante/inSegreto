@@ -4,10 +4,8 @@ export function handleSubmitNewPost(sayItForm, postContainer, page, newPostDialo
     sayItForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         await submitNewPost();
-        console.log('post submitted');
         newPostDialog.close();
         window.location.hash = '';
-        console.log('about to render')
         renderFeed(postContainer, page); 
     }); 
 };
