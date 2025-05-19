@@ -15,7 +15,9 @@ export default function setUpScrollPagination(postContainer, page, body) {
             page += 1;
             postContainer.innerHTML = '';
             renderFeed(postContainer, page);
-            isLoading = false;
+            setTimeout(() => {
+                isLoading = false;
+            }, 300);
         };
     });
 }
